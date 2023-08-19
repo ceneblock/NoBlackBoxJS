@@ -1,0 +1,3 @@
+[submodule "drawing-data"]
+	path = drawing-data
+	url = git@github.com:ceneblock/drawing-data.git
