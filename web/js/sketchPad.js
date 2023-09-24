@@ -1,5 +1,5 @@
 class SketchPad{
-  constructor(container, size=400)
+  constructor(container, onUpdate=null, size=400)
   {
     this.canvas=document.createElement("canvas");
     this.canvas.width=size;
@@ -20,6 +20,8 @@ class SketchPad{
     container.appendChild(this.undoBtn);
 
     this.ctx=this.canvas.getContext("2d");
+
+    this.onUpdate=onUpdate;
 
     this.reset();
 
@@ -79,6 +81,15 @@ class SketchPad{
     else
     {
       this.undoBtn.disabled = true;
+    }
+    this.triggerUpdate();
+  }
+
+  triggerUpdate()
+  {
+    if(this.onUpdate)
+    {
+      this.onUpdate(this.paths);
     }
   }
 
